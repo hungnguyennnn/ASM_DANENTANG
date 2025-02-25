@@ -1,0 +1,76 @@
+{
+  "producs_coffee": [
+    {
+      "name": "Cappuccino new ",
+      "price": "$4.20",
+      "description": "With Steamed Milk",
+      "image": "https://pos.nvncdn.com/86c7ad-50310/art/artCT/20240925_UCFNExUF.png",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "name": "Cappuccino",
+      "description": "With Foam",
+      "price": "$4.20",
+      "rating": 4.2,
+      "image": "https://pos.nvncdn.com/86c7ad-50310/art/artCT/20240925_UCFNExUF.png"
+    },
+    {
+      "id": "559f",
+      "name": "matcha da xay",
+      "price": "10000",
+      "description": "ngon vai o",
+      "image": "https://beptruong.edu.vn/wp-content/uploads/2015/12/matcha-da-xay.jpg"
+    },
+    {
+      "name": "milo dam",
+      "price": "245566",
+      "description": "ngon thi",
+      "image": "https://bizweb.dktcdn.net/100/421/036/files/cach-lam-milo-dam-banh-flan.jpg?v=1641865944268",
+      "id": "342e"
+    }
+  ],
+  "Users": [
+    {
+      "id": "1",
+      "user": "Admin",
+      "email": "admin@gmail.com",
+      "password": "admin"
+    },
+    {
+      "id": "2",
+      "user": "User",
+      "email": "user@gmail.com",
+      "password": "user"
+    },
+    {
+      "id": "ba0d",
+      "name": "abc",
+      "email": "abc@gmail.com",
+      "password": "123"
+    }
+  ],
+  "produc_bean": [
+    {
+      "id": "1",
+      "name": "Robusta Beans",
+      "description": "Medium Roasted",
+      "price": "$4.20",
+      "image": "https://img.lovepik.com/photo/20211122/medium/lovepik-coffee-beans-picture_500688001.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Cappuccino",
+      "description": "With Steamed Milk",
+      "price": "$4.20",
+      "image": "https://img.lovepik.com/photo/20211122/medium/lovepik-coffee-beans-picture_500688001.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Cappuccino",
+      "description": "With Steamed Milk",
+      "price": "$4.20",
+      "image": "https://img.lovepik.com/photo/20211122/medium/lovepik-coffee-beans-picture_500688001.jpg"
+    }
+  ]
+}
