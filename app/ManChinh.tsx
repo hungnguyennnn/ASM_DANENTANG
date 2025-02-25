@@ -14,6 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import Detail from "./CoffeeDetailsScreen"
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -26,12 +27,19 @@ const CoffeeShop = () => {
   const [coffeeData, setCoffeeData] = useState([]);
   const [beanData, setBeanData] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  interface Product {
+    id: string;
+    name: string;
+    description: string;
+    price: string;
+    image: string;
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const coffeeResponse = await fetch("http://192.168.1.11:3000/producs_coffee");
-        const beanResponse = await fetch("http://192.168.1.11:3000/produc_bean");
+        const coffeeResponse = await fetch("http://10.24.51.6:3000/producs_coffee");
+        const beanResponse = await fetch("http://10.24.51.6:3000/produc_bean");
 
         const coffeeResult = await coffeeResponse.json();
         const beanResult = await beanResponse.json();
@@ -47,17 +55,24 @@ const CoffeeShop = () => {
     fetchData();
   }, []);
 
-  const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.card}>
+  const renderItem = ({ item }: { item: Product }) => (
+    <TouchableOpacity style={styles.card} onPress={() => setSelectedProduct(item)}>
       <Image source={{ uri: item.image }} style={styles.image} />
       <Text style={styles.title}>{item.name}</Text>
-      <Text style={styles.price}>$ {item.price}</Text>
-      <TouchableOpacity style={styles.addButton}>
-        <Ionicons name="add" size={16} color="#fff" />
-      </TouchableOpacity>
+      <Text style={styles.description}>{item.description}</Text>
+      <View style={styles.row}>
+        <Text style={styles.price}>{item.price}</Text>
+        <TouchableOpacity style={styles.addButton} >
+          <Ionicons name="add" size={16} color="#fff" />
+        </TouchableOpacity>
+      </View>
     </TouchableOpacity>
   );
 
+  if (selectedProduct) {
+    return <Detail productId={selectedProduct.id} onGoBack={() => setSelectedProduct(null)} />;
+  }
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -162,7 +177,7 @@ const styles = StyleSheet.create({
      flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 50 },
   headerText: { fontSize: 24, fontWeight: "bold", color: "#fff" },
   searchContainer: { flexDirection: "row", backgroundColor: "#2a2a2a", borderRadius: 18, padding: 10, marginVertical: 20 },
-  icon: { margin: 10 },
+  icon: { marginRight: 10 },
   searchInput: { flex: 1, color: "#fff" },
   category: { fontSize: 18, color: "#aaa", paddingHorizontal: 15, paddingVertical: 10 },
   selectedCategory: { color: "#ff7f50", fontWeight: "bold" },
@@ -174,4 +189,14 @@ const styles = StyleSheet.create({
   addButton: { position: "absolute", bottom: 10, right: 10, backgroundColor: "#ff7f50", padding: 5, borderRadius: 5 },
   center: { flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#1e1e1e" },
   text: { fontSize: 22, color: "#fff", fontWeight: "bold" },
+  description: {
+    fontSize: 12,
+    color: "#aaa",
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 10,
+  },
 });

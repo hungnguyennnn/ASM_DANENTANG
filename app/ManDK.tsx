@@ -97,7 +97,7 @@ export default function ManDN() {
     
         // Gửi dữ liệu lên API
         try {
-            const response = await fetch('http:192.168.1.11:3000/Users', {
+            const response = await fetch('http:10.24.51.6:3000/Users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

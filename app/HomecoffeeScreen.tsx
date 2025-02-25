@@ -33,7 +33,7 @@ const HomecoffeeScreen = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('http:192.168.1.11:3000/producs_coffee');
+            const response = await fetch('http:10.24.51.6:3000/producs_coffee');
             const data = await response.json();
             setProducts(data);
         } catch (error) {
@@ -51,13 +51,13 @@ const HomecoffeeScreen = () => {
         try {
             let response;
             if (editingId) {
-                response = await fetch(`http:192.168.1.11:3000/producs_coffee/${editingId}`, {
+                response = await fetch(`http:10.24.51.6:3000/producs_coffee/${editingId}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(productData)
                 });
             } else {
-                response = await fetch('http:192.168.1.11:3000/producs_coffee', {
+                response = await fetch('http:10.24.51.6:3000/producs_coffee', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(productData)
@@ -81,7 +81,7 @@ const HomecoffeeScreen = () => {
                 text: 'Xóa',
                 onPress: async () => {
                     try {
-                        await fetch(`http:192.168.1.11:3000/producs_coffee/${id}`, { method: 'DELETE' });
+                        await fetch(`http:10.24.51.6:3000/producs_coffee/${id}`, { method: 'DELETE' });
                         fetchProducts();
                     } catch (error) {
                         console.error('Error deleting product:', error);

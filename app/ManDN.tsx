@@ -59,7 +59,7 @@ export default function ManDN() {
         }
         
         try {
-            const response = await fetch('http:192.168.1.11:3000/Users');
+            const response = await fetch('http://10.24.51.6:3000/Users');
             const users = await response.json();
             
             // Tìm người dùng có email và mật khẩu trùng khớp
